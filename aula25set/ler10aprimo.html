@@ -14,7 +14,7 @@
         <label>Digite um número</label><br>
         <input type="number" id="recebedora"><br>
         <button type="button" id="armazenar"> Armazenar </button>
-        <button type="button" id="encontrarMenor">Encontrar menor numero</button>
+        <button type="button" onclick="encontrarMenor()">Encontrar menor numero</button>
     </form>
 
     <p id="resultado"></p>
@@ -24,20 +24,14 @@
 
         document.getElementById("armazenar").onclick = function() {
             let recebedora = parseFloat(document.getElementById("recebedora").value);
-           if (!isNaN(recebedora)) {
+           if (!isNaN(recebedora)) 
             numeros.push(recebedora);
             document.getElementById("recebedora").value = '';
-           } 
         }
-        document.getElementById("encontrarMenor").onclick = function() {
+        function encontrarMenor(){
             if (numeros.length > 0) {
-                let menorNumero = numeros[0]
-                for (let i = 1; i < 10; i++) {
-                    if (numeros[i] < menorNumero) {
-                        menorNumero = numeros[i];
-                    }
-                }
-                document.getElementById("resultado").innerText = "os numeros digitados foram:" + numeros.join(", ") +  "\n menor numero digitado foi:" + menorNumero;
+            let menorNumero = Math.min(...numeros)
+                 document.getElementById("resultado").innerText = "os numeros digitados foram:" + numeros.join(", ") +  "\n menor numero digitado foi:" + menorNumero;
             } else{
                 document.getElementById("resultado").innerText = "nenhum numero foi armazenado" 
             }
